@@ -1,10 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import useStore from "../store/todo-slice";
+import { useShallow } from "zustand/react/shallow";
 
-function Todo({ todo, editTodo, checkTodo, deleteTodo }) {
+function Todo({ todo }) {
   const [editText, setEditText] = useState(todo.text);
   const [openForm, setOpenForm] = useState(false);
+
+  const { deleteTodo, editTodo, checkTodo } = useStore();
 
   const editInput = useRef(null);
 

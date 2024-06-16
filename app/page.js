@@ -13,15 +13,7 @@ function Home() {
   const [addText, setAddText] = useState("");
   const [category, setCategory] = useState("All");
 
-  const { todos, addTodo, deleteTodo, editTodo, checkTodo } = useStore(
-    useShallow((state) => ({
-      todos: state.todos,
-      addTodo: state.addTodo,
-      deleteTodo: state.deleteTodo,
-      editTodo: state.editTodo,
-      checkTodo: state.checkTodo,
-    }))
-  );
+  const { todos, addTodo } = useStore();
 
   const filterCategories = [
     { name: "All" },
@@ -63,13 +55,7 @@ function Home() {
       <div className="lg:grid lg:grid-cols-3 gap-8 lg:justify-between lg:mx-auto max-w-screen-lg max-lg:flex max-lg:flex-col-reverse">
         <div className="container mx-auto lg:col-span-1 max-sm:w-4/5">
           {filteredTodos.map((todo) => (
-            <Todo
-              key={todo.id}
-              todo={todo}
-              editTodo={editTodo}
-              checkTodo={checkTodo}
-              deleteTodo={deleteTodo}
-            />
+            <Todo key={todo.id} todo={todo} />
           ))}
         </div>
         <div className="container mx-auto lg:col-span-2 max-sm:w-4/5">
