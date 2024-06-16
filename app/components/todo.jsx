@@ -14,6 +14,12 @@ function Todo({ todo, editTodo, checkTodo, deleteTodo }) {
     }
   };
 
+  const handleEdit = (e) => {
+    e.preventDefault();
+    editTodo(todo.id, editText);
+    setOpenForm(false);
+  };
+
   const handleForm = () => {
     setOpenForm(!openForm);
   };
@@ -73,10 +79,7 @@ function Todo({ todo, editTodo, checkTodo, deleteTodo }) {
           <form
             className="flex justify-between pl-0 pr-5"
             method="POST"
-            onSubmit={(e) => {
-              editTodo(e, todo.id, editText);
-              setOpenForm(false);
-            }}
+            onSubmit={handleEdit}
           >
             <input
               aria-label="Edit todo"
